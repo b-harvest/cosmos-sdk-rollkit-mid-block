@@ -57,12 +57,16 @@ func (gs GenesisState) Validate() error {
 			return fmt.Errorf("genesis supply is incorrect, expected %v, got %v", gs.Supply, totalSupply)
 		}
 	}
-
+	for _, addr := range gs.BlockedAddrs {
+		if _, err := sdk.AccAddressFromBech32(addr); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 // NewGenesisState creates a new genesis state.
-func NewGenesisState(params Params, balances []Balance, supply sdk.Coins, denomMetaData []Metadata) *GenesisState {
+func NewGenesisState(params Params, balances []Balance, supply sdk.Coins, denomMetaData []Metadata, blockedAddrs []string) *GenesisState {
 	return &GenesisState{
 		Params:        params,
 		Balances:      balances,
@@ -73,7 +77,7 @@ func NewGenesisState(params Params, balances []Balance, supply sdk.Coins, denomM
 
 // DefaultGenesisState returns a default bank module genesis state.
 func DefaultGenesisState() *GenesisState {
-	return NewGenesisState(DefaultParams(), []Balance{}, sdk.Coins{}, []Metadata{})
+	return NewGenesisState(DefaultParams(), []Balance{}, sdk.Coins{}, []Metadata{}, []string{})
 }
 
 // GetGenesisStateFromAppState returns x/bank GenesisState given raw application
