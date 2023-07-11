@@ -41,12 +41,6 @@ type GenesisState struct {
 }
 
 func (m *GenesisState) Reset()         { *m = GenesisState{} }
-func (m *GenesisState) GetBlockedAddrs() []string {
-	if m != nil {
-		return m.BlockedAddrs
-	}
-	return nil
-}
 func (m *GenesisState) String() string { return proto.CompactTextString(m) }
 func (*GenesisState) ProtoMessage()    {}
 func (*GenesisState) Descriptor() ([]byte, []int) {
@@ -103,6 +97,13 @@ func (m *GenesisState) GetSupply() github_com_cosmos_cosmos_sdk_types.Coins {
 func (m *GenesisState) GetDenomMetadata() []Metadata {
 	if m != nil {
 		return m.DenomMetadata
+	}
+	return nil
+}
+
+func (m *GenesisState) GetBlockedAddrs() []string {
+	if m != nil {
+		return m.BlockedAddrs
 	}
 	return nil
 }
@@ -230,12 +231,6 @@ func (m *GenesisState) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 			dAtA[i] = 0x22
 		}
 	}
-	if len(m.BlockedAddrs) > 0 {
-		for _, s := range m.BlockedAddrs {
-			l = len(s)
-			n += 1 + l + sovGenesis(uint64(l))
-		}
-	}
 	if len(m.Supply) > 0 {
 		for iNdEx := len(m.Supply) - 1; iNdEx >= 0; iNdEx-- {
 			{
@@ -355,6 +350,12 @@ func (m *GenesisState) Size() (n int) {
 	if len(m.DenomMetadata) > 0 {
 		for _, e := range m.DenomMetadata {
 			l = e.Size()
+			n += 1 + l + sovGenesis(uint64(l))
+		}
+	}
+	if len(m.BlockedAddrs) > 0 {
+		for _, s := range m.BlockedAddrs {
+			l = len(s)
 			n += 1 + l + sovGenesis(uint64(l))
 		}
 	}

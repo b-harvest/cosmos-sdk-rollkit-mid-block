@@ -1,6 +1,8 @@
 package types
 
 import (
+	"bytes"
+
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/address"
 	"github.com/cosmos/cosmos-sdk/types/kv"
@@ -57,6 +59,10 @@ func AddressFromBalancesStore(key []byte) (sdk.AccAddress, error) {
 // CreateAccountBalancesPrefix creates the prefix for an account's balances.
 func CreateAccountBalancesPrefix(addr []byte) []byte {
 	return append(BalancesPrefix, address.MustLengthPrefix(addr)...)
+}
+
+func CreatePrefixedAccountStoreKey(addr []byte, denom []byte) []byte {
+	return append(CreateAccountBalancesPrefix(addr), denom...)
 }
 
 // BlockedAddrKey the key for an account's blocking flag.
