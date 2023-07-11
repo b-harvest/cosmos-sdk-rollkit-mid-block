@@ -263,10 +263,10 @@ replace (
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 
 	github.com/jhump/protoreflect => github.com/jhump/protoreflect v1.9.0
-	github.com/rollkit/rollkit v0.9.0 => github.com/b-harvest/rollkit-mid-block v0.9.1-0.20230711195850-f67f228c5729
+	github.com/rollkit/rollkit v0.9.0 => github.com/b-harvest/rollkit-mid-block v0.9.1-0.20230711202313-fd7b4100b5b9
 
 	// use cometbft
-	github.com/tendermint/tendermint => github.com/b-harvest/cometbft-rollkit-mid-block v0.0.0-20230711195619-9d3947731146
+	github.com/tendermint/tendermint => github.com/b-harvest/cometbft-rollkit-mid-block v0.0.0-20230711202058-8170cbccab87
 	// latest grpc doesn't work with with our modified proto compiler, so we need to enforce
 	// the following version across all dependencies.
 	google.golang.org/grpc => google.golang.org/grpc v1.33.2
