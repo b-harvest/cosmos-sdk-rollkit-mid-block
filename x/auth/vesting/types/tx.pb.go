@@ -357,8 +357,6 @@ type MsgClient interface {
 	// CreateVestingAccount defines a method that enables creating a vesting
 	// account.
 	CreateVestingAccount(ctx context.Context, in *MsgCreateVestingAccount, opts ...grpc.CallOption) (*MsgCreateVestingAccountResponse, error)
-	// CreatePeriodicVestingAccount defines a method that enables creating a
-	// periodic vesting account.
 	CreatePeriodicVestingAccount(ctx context.Context, in *MsgCreatePeriodicVestingAccount, opts ...grpc.CallOption) (*MsgCreatePeriodicVestingAccountResponse, error)
 }
 
@@ -393,8 +391,6 @@ type MsgServer interface {
 	// CreateVestingAccount defines a method that enables creating a vesting
 	// account.
 	CreateVestingAccount(context.Context, *MsgCreateVestingAccount) (*MsgCreateVestingAccountResponse, error)
-	// CreatePeriodicVestingAccount defines a method that enables creating a
-	// periodic vesting account.
 	CreatePeriodicVestingAccount(context.Context, *MsgCreatePeriodicVestingAccount) (*MsgCreatePeriodicVestingAccountResponse, error)
 }
 
@@ -1178,7 +1174,6 @@ func (m *MsgCreatePeriodicVestingAccountResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func skipTx(dAtA []byte) (n int, err error) {
 	l := len(dAtA)
 	iNdEx := 0
