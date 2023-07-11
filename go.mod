@@ -265,7 +265,7 @@ replace (
 	github.com/jhump/protoreflect => github.com/jhump/protoreflect v1.9.0
 
 	// use cometbft
-	github.com/tendermint/tendermint => github.com/rollkit/cometbft v0.0.0-20230524013001-2968c8b8b121
+	github.com/tendermint/tendermint => github.com/b-harvest/cometbft-rollkit-mid-block v0.0.0-20230711150658-2bd68872e965
 
 	// latest grpc doesn't work with with our modified proto compiler, so we need to enforce
 	// the following version across all dependencies.
